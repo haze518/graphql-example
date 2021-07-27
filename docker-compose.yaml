@@ -1,0 +1,29 @@
+version: '3.8'
+
+x-db-variables: &db-variables
+    POSTGRES_USER: user
+    POSTGRES_PASSWORD: hackme
+    POSTGRES_DB: films
+
+x-app-variables: &app-variables
+    <<: *db-variables
+    POSTGRES_HOST: db
+
+services: 
+    app:
+        image: films:latest
+        environment: *app-variables
+        volumes:
+            - .:/app
+        container_name: app
+        depends_on:
+            - db
+        ports: 
+            - 8000:8000
+        command: bash -c "alembic upgrade head && poetry run python run.py"
+    db:
+        image: postgres:13
+        container_name: postgresdb
+        ports: 
+            - 5432:5432
+        environment: *db-variables
