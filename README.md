@@ -1,7 +1,6 @@
 # GraphQL example using strawbeey
 
 ## Как запустить
-Run
 ~~~~
 $ make build
 ~~~~
