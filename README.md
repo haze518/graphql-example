@@ -1,4 +1,4 @@
-# GraphQL example using strawbeey
+# GraphQL example using strawberry
 
 ## Как запустить
 ~~~~
